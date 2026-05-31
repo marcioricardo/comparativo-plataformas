@@ -5,6 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hotmart — Guia completo de configuração | Comparativo de Plataformas</title>
 <link rel="stylesheet" href="/styles.css">
+<style>
+  /* ===== Layout guia: menu lateral fixo + busca + ordem cronológica ===== */
+  .guide{max-width:1180px;margin:0 auto;display:flex;gap:26px;padding:16px 22px 0;align-items:flex-start}
+  .guide-toc{position:sticky;top:72px;flex:0 0 236px;align-self:flex-start;max-height:calc(100vh - 92px);overflow:auto;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px}
+  .toc-ttl{font-size:11px;font-weight:850;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:2px 2px 9px}
+  .toc-search{width:100%;padding:10px 12px;border:1px solid var(--line-strong);border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);background:var(--surface-2);outline:none}
+  .toc-search:focus{border-color:var(--accent);background:#fff}
+  .toc-list{display:flex;flex-direction:column;gap:3px;margin-top:12px}
+  .toc-list a{display:block;padding:8px 11px;border-radius:9px;font-size:13.5px;font-weight:700;color:var(--ink-soft);text-decoration:none;transition:.15s}
+  .toc-list a:hover{background:var(--accent-soft);color:var(--accent-dark)}
+  .toc-list a.on{background:var(--accent);color:#fff}
+  .toc-list a.toc-dim{opacity:.32}
+  .toc-count{margin:11px 2px 2px;font-size:12px;color:var(--accent-dark);font-weight:800;min-height:14px}
+  .guide-main{flex:1;min-width:0;display:flex;flex-direction:column}
+  .guide-main .wrap{max-width:100%;margin:0;padding:0}
+  /* ordem cronológica de implementação (reordena visualmente sem mover o HTML) */
+  #setup{order:1}#vitrine{order:2}#recorrencia{order:3}#origem{order:4}#operacional{order:5}#relacionamento{order:6}#saas{order:7}#problemas{order:8}#resumo{order:9}
+  .hide{display:none !important}
+  .no-result{display:none;background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--radius);padding:22px;text-align:center;color:var(--muted);font-weight:700;margin:20px 0}
+  @media(max-width:900px){
+    .guide{flex-direction:column;gap:0;padding:0}
+    .guide-toc{position:sticky;top:60px;z-index:45;flex:none;width:100%;max-height:none;border-radius:0;border-width:0 0 1px;box-shadow:none;padding:10px 16px;background:rgba(246,243,239,.96);backdrop-filter:blur(8px)}
+    .toc-ttl{display:none}
+    .toc-list{flex-direction:row;overflow-x:auto;gap:6px;scrollbar-width:none;margin-top:10px}
+    .toc-list::-webkit-scrollbar{display:none}
+    .toc-list a{white-space:nowrap;flex:0 0 auto;background:var(--surface-2);border:1px solid var(--line)}
+    .toc-count{display:none}
+    .guide-main{padding:0 16px}
+  }
+</style>
 </head>
 <body class="acc-hotmart">
 
@@ -50,19 +81,25 @@
   </div>
 </div>
 
-<nav class="sub">
-  <div class="wrap">
-    <a href="#setup">🚀 Primeiros passos</a>
-    <a href="#recorrencia">🔁 Raízes (recorrência)</a>
-    <a href="#origem">🔴 Origem (ao vivo)</a>
-    <a href="#vitrine">🛍️ Vitrine & funil</a>
-    <a href="#relacionamento">💛 Relacionamento</a>
-    <a href="#operacional">⚙️ Operacional</a>
-    <a href="#saas">💻 Vender SaaS</a>
-    <a href="#problemas">⚠️ Problemas comuns</a>
-    <a href="#resumo">⭐ Resumo</a>
-  </div>
-</nav>
+<div class="guide">
+  <aside class="guide-toc">
+    <div class="toc-ttl">Guia de configuração</div>
+    <input type="search" class="toc-search" placeholder="🔎 Buscar tutorial…" aria-label="Buscar tutorial">
+    <nav class="toc-list">
+      <a href="#setup">🚀 1 · Primeiros passos</a>
+      <a href="#vitrine">🛍️ 2 · Vitrine & funil</a>
+      <a href="#recorrencia">🔁 3 · Recorrência (Raízes)</a>
+      <a href="#origem">🔴 4 · Lançamento ao vivo (Origem)</a>
+      <a href="#operacional">⚙️ 5 · Operacional</a>
+      <a href="#relacionamento">💛 6 · Relacionamento & alcance</a>
+      <a href="#saas">💻 7 · Vender SaaS</a>
+      <a href="#problemas">⚠️ 8 · Problemas comuns</a>
+      <a href="#resumo">⭐ Resumo</a>
+    </nav>
+    <div class="toc-count"></div>
+  </aside>
+  <main class="guide-main">
+    <div class="no-result">Nenhum tutorial encontrado para essa busca. Tente outra palavra (ex.: “order bump”, “webhook”, “pixel”, “saque”).</div>
 
 <!-- ===== PRIMEIROS PASSOS ===== -->
 <section id="setup">
@@ -699,6 +736,9 @@
   </div>
 </section>
 
+  </main>
+</div>
+
 <footer>
   <div class="wrap">
     <span style="font-size:13.5px">Comparativo de Plataformas de Infoprodutos · guia completo — Hotmart</span>
@@ -707,5 +747,49 @@
   <div class="wrap"><p class="disc">Dados e vídeos verificados em maio/2026. Priorizamos tutoriais de 2025/2026; onde indicado “· 2024”, é o material mais recente e confiável disponível e a interface pode ter pequenas diferenças — confirme na documentação oficial. Vídeos de canais não oficiais (parceiros) demonstram a configuração na prática, mas podem conter links de afiliado. Taxas e regras mudam; confirme antes de decidir.</p></div>
 </footer>
 
+<script>
+(function(){
+  const search = document.querySelector('.toc-search');
+  const main = document.querySelector('.guide-main');
+  const cards = [...main.querySelectorAll('.feat')];
+  const sections = [...main.querySelectorAll('section')];
+  const tocLinks = [...document.querySelectorAll('.toc-list a')];
+  const count = document.querySelector('.toc-count');
+  const noRes = main.querySelector('.no-result');
+
+  function doSearch(){
+    const term = (search.value || '').trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(c=>{
+      const m = !term || c.textContent.toLowerCase().includes(term);
+      c.classList.toggle('hide', !m);
+      if(m && term) visible++;
+    });
+    sections.forEach(s=>{
+      const feats = s.querySelectorAll('.feat');
+      const link = tocLinks.find(a=>a.getAttribute('href')==='#'+s.id);
+      if(!feats.length){ if(link) link.classList.toggle('toc-dim', !!term); return; }
+      const anyVis = [...feats].some(c=>!c.classList.contains('hide'));
+      s.classList.toggle('hide', !!term && !anyVis);
+      if(link) link.classList.toggle('toc-dim', !!term && !anyVis);
+    });
+    count.textContent = term ? (visible + ' resultado' + (visible===1?'':'s')) : '';
+    if(noRes) noRes.style.display = (term && visible===0) ? 'block' : 'none';
+  }
+  search.addEventListener('input', doSearch);
+  search.addEventListener('search', doSearch);
+
+  function onScroll(){
+    const y = window.scrollY + 140;
+    const ordered = [...sections].filter(s=>!s.classList.contains('hide')).sort((a,b)=>a.offsetTop-b.offsetTop);
+    let cur = ordered[0];
+    for(const s of ordered){ if(s.offsetTop<=y) cur=s; }
+    tocLinks.forEach(a=>a.classList.toggle('on', cur && a.getAttribute('href')==='#'+cur.id));
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
