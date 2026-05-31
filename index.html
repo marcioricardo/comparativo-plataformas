@@ -282,7 +282,26 @@
   footer .disc{font-size:12.5px;color:#8E8794;border-top:1px solid #3A3540;margin-top:26px;padding-top:18px;line-height:1.6}
 
   .hide{display:none !important}
+
+  /* ===== Navegação fluida + ícones minimalistas ===== */
+  /* revelar ao rolar (só ativa com JS via html.anim; sem JS, tudo visível) */
+  html.anim .rank,html.anim .pcard,html.anim .icard,html.anim .banner,html.anim .matrix-wrap,html.anim .cost-wrap{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .55s cubic-bezier(.2,.75,.25,1)}
+  html.anim .is-in{opacity:1 !important;transform:none !important}
+  @media (prefers-reduced-motion:reduce){html.anim .rank,html.anim .pcard,html.anim .icard,html.anim .banner,html.anim .matrix-wrap,html.anim .cost-wrap{opacity:1;transform:none;transition:none}}
+  /* hover/transições fluidas */
+  .pcard{transition:transform .3s cubic-bezier(.2,.75,.25,1), box-shadow .25s, border-color .25s, opacity .6s ease}
+  .pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .rank{transition:transform .22s ease, box-shadow .22s, opacity .6s ease}
+  .rank:hover{transform:translateX(4px)}
+  .icard{transition:transform .25s, box-shadow .25s, opacity .6s ease;border-left:3px solid color-mix(in srgb,var(--brand) 26%, var(--line))}
+  .icard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .btn{transition:transform .18s, filter .18s, box-shadow .18s}
+  .btn:hover{transform:translateY(-1px)}
+  /* ícones minimalistas: esconder os badges decorativos dos insights */
+  .icard h4 .ic{display:none}
+  .icard h4{gap:0}
 </style>
+<script>document.documentElement.classList.add('anim')</script>
 </head>
 <body>
 
@@ -303,13 +322,13 @@
 <!-- ============ SUB NAV ============ -->
 <nav class="sub">
   <div class="wrap" id="subnav">
-    <a href="#ranking" class="on">🏆 Ranking</a>
-    <a href="#matriz">📊 Matriz</a>
-    <a href="#vitrine">🛍️ Vitrine</a>
-    <a href="#video">🎬 Vídeo</a>
-    <a href="#plataformas">🧩 Plataformas</a>
-    <a href="#insights">💡 Insights</a>
-    <a href="#recomendacao">🎯 Recomendação</a>
+    <a href="#ranking" class="on"> Ranking</a>
+    <a href="#matriz"> Matriz</a>
+    <a href="#vitrine"> Vitrine</a>
+    <a href="#video"> Vídeo</a>
+    <a href="#plataformas"> Plataformas</a>
+    <a href="#insights"> Insights</a>
+    <a href="#recomendacao"> Recomendação</a>
   </div>
 </nav>
 
@@ -332,7 +351,7 @@
 <!-- ============ RANKING ============ -->
 <section id="ranking">
   <div class="wrap">
-    <span class="eyebrow">🏆 Placar final</span>
+    <span class="eyebrow"> Placar final</span>
     <h2 class="sec">Ranking geral — <span class="hl">da maior para a menor nota</span></h2>
     <p class="sec-intro">Nota de 0 a 10 ponderada pelo seu contexto: recorrência do “Raízes”, IA de recuperação de vendas, experiência mobile/app para 35–55, custo e tom de marca acolhedor. <b>★ = prioridade que você indicou.</b></p>
 
@@ -399,7 +418,7 @@
 <!-- ============ MATRIZ ============ -->
 <section id="matriz">
   <div class="wrap">
-    <span class="eyebrow">📊 Visão de relance</span>
+    <span class="eyebrow"> Visão de relance</span>
     <h2 class="sec">Matriz comparativa <span class="hl">lado a lado</span></h2>
     <p class="sec-intro">Os critérios decisivos nas linhas; as plataformas nas colunas. A <b>linha de taxa</b> tem destaque por ser fator decisivo, e as colunas de <b>Hotmart</b> e <b>Greenn</b> (suas prioridades) estão levemente realçadas.</p>
 
@@ -419,7 +438,7 @@
           </thead>
           <tbody>
             <tr class="fee">
-              <th class="rowh"><span class="ic">💰</span>Taxa por venda</th>
+              <th class="rowh"><span class="ic"></span>Taxa por venda</th>
               <td>9,9% <span class="eff">+ R$1,00 (a maior)</span></td>
               <td>4,99% <span class="eff">+ R$1,00 (a menor)</span></td>
               <td>8,99% <span class="eff">+ R$2,49</span></td>
@@ -428,7 +447,7 @@
               <td>8,9% <span class="eff">+ R$2,49</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🔁</span>Recorrência (entrada aberta)</th>
+              <th class="rowh"><span class="ic"></span>Recorrência (entrada aberta)</th>
               <td><span class="yes">Forte</span><br><span class="mtag">acesso individual + drip</span></td>
               <td><span class="yes">Sim</span><br><span class="mtag">PIX automático</span></td>
               <td><span class="yes">Sim</span><br><span class="mtag">acesso individual</span></td>
@@ -437,7 +456,7 @@
               <td><span class="yes">Sim</span><br><span class="mtag">drip por aluno</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🛍️</span>Vitrine na área de membros</th>
+              <th class="rowh"><span class="ic"></span>Vitrine na área de membros</th>
               <td><span class="yes">Completa</span><br><span class="mtag">anúncio na aula</span></td>
               <td><span class="partial">Básica</span><br><span class="mtag">card + banner</span></td>
               <td><span class="partial">Boa</span><br><span class="mtag">cadeado + combos</span></td>
@@ -446,7 +465,7 @@
               <td><span class="no">Fraca</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🎯</span>Atribuição interna (origem)</th>
+              <th class="rowh"><span class="ic"></span>Atribuição interna (origem)</th>
               <td><span class="yes">Sim</span><br><span class="mtag">“Club Sales”</span></td>
               <td><span class="no">Não documentada</span></td>
               <td><span class="partial">UTM interna</span></td>
@@ -455,7 +474,7 @@
               <td><span class="partial">UTM manual</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🤖</span>IA recuperação pré-checkout</th>
+              <th class="rowh"><span class="ic"></span>IA recuperação pré-checkout</th>
               <td><span class="partial">Via integração</span></td>
               <td><span class="yes">Closer.AI</span><br><span class="mtag">nativa</span></td>
               <td><span class="no">Só 3º-party</span></td>
@@ -464,7 +483,7 @@
               <td><span class="no">Não conversacional</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">📱</span>App nativo do aluno</th>
+              <th class="rowh"><span class="ic"></span>App nativo do aluno</th>
               <td><span class="yes">Sim</span></td>
               <td><span class="yes">Sim</span></td>
               <td><span class="yes">Sim</span></td>
@@ -473,7 +492,7 @@
               <td><span class="yes">Sim</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">👥</span>Comunidade nativa</th>
+              <th class="rowh"><span class="ic"></span>Comunidade nativa</th>
               <td><span class="yes">Sim</span><br><span class="mtag">+ gamificação</span></td>
               <td><span class="no">Limitada</span></td>
               <td><span class="partial">Fórum</span></td>
@@ -482,7 +501,7 @@
               <td><span class="yes">Grupos WhatsApp/Telegram</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🎬</span>Hospedagem de vídeo</th>
+              <th class="rowh"><span class="ic"></span>Hospedagem de vídeo</th>
               <td><span class="partial">Inclusa</span><br><span class="mtag">taxa player/venda</span></td>
               <td><span class="partial">3GB grátis</span><br><span class="mtag">planos R$39–628</span></td>
               <td><span class="yes">Grátis, até 4K</span></td>
@@ -491,7 +510,7 @@
               <td><span class="yes">Inclusa</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🏦</span>Saque PIX / cartão</th>
+              <th class="rowh"><span class="ic"></span>Saque PIX / cartão</th>
               <td>D+30 <span class="mtag">(antecipável)</span></td>
               <td><span class="yes">PIX D+0</span> / cartão D+30</td>
               <td>PIX D+2 / cartão D+15</td>
@@ -500,7 +519,7 @@
               <td>PIX D+2 / cartão D+15</td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🤝</span>Afiliados / marketplace</th>
+              <th class="rowh"><span class="ic"></span>Afiliados / marketplace</th>
               <td><span class="yes">Marketplace gigante</span></td>
               <td><span class="yes">Sim</span></td>
               <td><span class="yes">Marketplace</span></td>
@@ -509,7 +528,7 @@
               <td><span class="partial">Afiliação por produto</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🌎</span>Vendas internacionais</th>
+              <th class="rowh"><span class="ic"></span>Vendas internacionais</th>
               <td><span class="yes">22 moedas</span></td>
               <td><span class="no">Só PayPal/BRL</span></td>
               <td><span class="partial">Sim (confirmar)</span></td>
@@ -518,7 +537,7 @@
               <td><span class="no">Foco BR</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🛡️</span>Proteção de vídeo</th>
+              <th class="rowh"><span class="ic"></span>Proteção de vídeo</th>
               <td><span class="yes">DRM + marca d’água</span></td>
               <td><span class="partial">Marca d’água</span></td>
               <td><span class="no">Não documentado</span></td>
@@ -527,7 +546,7 @@
               <td><span class="partial">Padrão</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">📄</span>Nota fiscal</th>
+              <th class="rowh"><span class="ic"></span>Nota fiscal</th>
               <td><span class="partial">Integração</span></td>
               <td><span class="partial">Integração</span></td>
               <td><span class="partial">Integração</span></td>
@@ -536,7 +555,7 @@
               <td><span class="partial">Integração</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🎧</span>Suporte</th>
+              <th class="rowh"><span class="ic"></span>Suporte</th>
               <td>Chat (planos pagos)</td>
               <td>Chat + e-mail<br><span class="mtag">gerente p/ avançado</span></td>
               <td><span class="yes">Chat 7 dias, 1 min</span></td>
@@ -545,7 +564,7 @@
               <td>WhatsApp + central</td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🔄</span>Migração da Greenn</th>
+              <th class="rowh"><span class="ic"></span>Migração da Greenn</th>
               <td>Manual / integr.</td>
               <td>—</td>
               <td>Manual</td>
@@ -554,7 +573,7 @@
               <td><span class="yes">Onboarding 48h</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🚫</span>Restrição fé / saúde mental</th>
+              <th class="rowh"><span class="ic"></span>Restrição fé / saúde mental</th>
               <td><span class="partial">Evitar “cura”</span></td>
               <td><span class="yes">Sem restrição</span></td>
               <td><span class="partial">Evitar “cura”</span></td>
@@ -563,7 +582,7 @@
               <td><span class="partial">Padrão de mercado</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">⭐</span>Nota final</th>
+              <th class="rowh"><span class="ic"></span>Nota final</th>
               <td style="font-weight:850;color:var(--hotmart-dark)">8.9</td>
               <td style="font-weight:850;color:var(--greenn-dark)">8.0</td>
               <td style="font-weight:850;color:var(--kiwify-dark)">7.7</td>
@@ -587,7 +606,7 @@
 <!-- ============ VITRINE ============ -->
 <section id="vitrine" class="acc-brand">
   <div class="wrap">
-    <span class="eyebrow">🛍️ Recurso prioritário</span>
+    <span class="eyebrow"> Recurso prioritário</span>
     <h2 class="sec">Vitrine na área de membros — <span class="hl">vender para quem já é aluno</span></h2>
     <p class="sec-intro">Você detalhou exatamente o que precisa: que o aluno receba <b>ofertas de novos cursos dentro da área de membros</b> — antes de começar as aulas, com cadeado para estimular o acesso, dentro de uma aula, como trilha/combo, ao fim do curso, ou em banner de promoção/evento — e que dê para <b>rastrear onde a compra aconteceu</b>. Por ser prioridade, este bloco <b>pesa bastante na nota</b>.</p>
 
@@ -612,7 +631,7 @@
           </thead>
           <tbody>
             <tr>
-              <th class="rowh"><span class="ic">🛍️</span>Vitrine de cursos na área</th>
+              <th class="rowh"><span class="ic"></span>Vitrine de cursos na área</th>
               <td><span class="yes">Sim</span><br><span class="mtag">estilo Netflix</span></td>
               <td><span class="yes">Sim</span><br><span class="mtag">cards de curso</span></td>
               <td><span class="yes">Sim</span><br><span class="mtag">seção de cursos</span></td>
@@ -621,7 +640,7 @@
               <td><span class="partial">Parcial</span><br><span class="mtag">links entre áreas</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🔒</span>Conteúdo com cadeado (teaser)</th>
+              <th class="rowh"><span class="ic"></span>Conteúdo com cadeado (teaser)</th>
               <td><span class="yes">Sim</span></td>
               <td><span class="yes">Sim</span><br><span class="mtag">modal de venda</span></td>
               <td><span class="yes">Sim</span><br><span class="mtag">checkout em popup</span></td>
@@ -630,7 +649,7 @@
               <td><span class="no">Não</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">▶️</span>Cross-sell dentro da aula</th>
+              <th class="rowh"><span class="ic">▶</span>Cross-sell dentro da aula</th>
               <td><span class="yes">Sim</span><br><span class="mtag">Club Ads na aula</span></td>
               <td><span class="no">Não</span></td>
               <td><span class="no">Não</span></td>
@@ -639,7 +658,7 @@
               <td><span class="no">Não</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🪜</span>Trilhas / combos de cursos</th>
+              <th class="rowh"><span class="ic"></span>Trilhas / combos de cursos</th>
               <td><span class="partial">Parcial</span><br><span class="mtag">seção Trilhas</span></td>
               <td><span class="no">Não</span></td>
               <td><span class="yes">Sim</span><br><span class="mtag">combos (Grupos)</span></td>
@@ -648,7 +667,7 @@
               <td><span class="no">Não</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🏁</span>Recomendação ao fim do curso</th>
+              <th class="rowh"><span class="ic"></span>Recomendação ao fim do curso</th>
               <td><span class="partial">Não doc.</span></td>
               <td><span class="no">Não</span></td>
               <td><span class="no">Não</span></td>
@@ -657,7 +676,7 @@
               <td><span class="no">Não</span></td>
             </tr>
             <tr>
-              <th class="rowh"><span class="ic">🖼️</span>Banner (promoção / evento ao vivo)</th>
+              <th class="rowh"><span class="ic"></span>Banner (promoção / evento ao vivo)</th>
               <td><span class="partial">Parcial</span></td>
               <td><span class="yes">Sim</span></td>
               <td><span class="partial">Parcial</span></td>
@@ -666,7 +685,7 @@
               <td><span class="yes">Sim</span></td>
             </tr>
             <tr class="fee">
-              <th class="rowh"><span class="ic">🎯</span>Atribuição (onde comprou)</th>
+              <th class="rowh"><span class="ic"></span>Atribuição (onde comprou)</th>
               <td><span class="yes">Sim</span><br><span class="mtag">“Club Sales”</span></td>
               <td><span class="no">Não doc.</span></td>
               <td><span class="partial">UTM interna</span></td>
@@ -687,11 +706,11 @@
 
     <div class="two" style="margin-top:22px">
       <div class="block hl-accent acc-eduzz">
-        <h5>🥇 Melhor para a sua vitrine: Eduzz (Nutror)</h5>
+        <h5> Melhor para a sua vitrine: Eduzz (Nutror)</h5>
         <p>O recurso “Anúncios” cobre todos os seus pedidos: <b>banner na página da aula</b> (cross-sell contextual), <b>banner na home</b> (promoção/evento), <b>pop-up ao concluir</b> o curso e seção “Recomendados”. E cada anúncio mostra <b>visualizações, cliques, vendas e receita</b> — você sabe exatamente qual oferta converteu.</p>
       </div>
       <div class="block hl-accent acc-hotmart">
-        <h5>🥈 Forte e com rastreio: Hotmart (Club)</h5>
+        <h5> Forte e com rastreio: Hotmart (Club)</h5>
         <p>Vitrine estilo Netflix + <b>anúncio dentro da aula</b> (widget Club Ads, posicionado antes/depois da aula) + seções de <b>Trilhas</b>. E o painel “Origem de Vendas” tem a categoria <b>“Club Sales”</b>, isolando o que veio da área de membros.</p>
       </div>
     </div>
@@ -701,7 +720,7 @@
 <!-- ============ VÍDEO ============ -->
 <section id="video">
   <div class="wrap">
-    <span class="eyebrow">🎬 Hospedagem de vídeo</span>
+    <span class="eyebrow"> Hospedagem de vídeo</span>
     <h2 class="sec">Vídeo das aulas — <span class="hl">como funciona, custo e proteção</span></h2>
     <p class="sec-intro">Duas decisões: <b>onde hospedar</b> (player nativo da plataforma vs. Vimeo/Panda/YouTube) e <b>quanto custa</b>. Todas as principais aceitam vídeo externo; a diferença está no custo e na proteção contra pirataria.</p>
 
@@ -713,7 +732,7 @@
             <tr>
               <th class="crit rowh">Plataforma</th>
               <th class="col" style="--cc:var(--ink)">Como funciona</th>
-              <th class="col crit" style="background:#FFF6E8;color:#8A5A00">💰 Custo da hospedagem</th>
+              <th class="col crit" style="background:#FFF6E8;color:#8A5A00"> Custo da hospedagem</th>
               <th class="col" style="--cc:var(--ink)">Qualidade</th>
             </tr>
           </thead>
@@ -755,7 +774,7 @@
     </div>
 
     <div class="block hl-accent acc-brand" style="margin-top:20px">
-      <h5>🛡️ Recomendação de proteção</h5>
+      <h5> Recomendação de proteção</h5>
       <p>A proteção mais forte em todas é o <b>Panda Video (DRM + marca d’água com os dados do aluno na tela)</b>, suportado nativamente por Hotmart, Greenn, Kiwify, Eduzz e TheMembers — na Hubla o embed externo não é documentado. Se proteger as aulas é prioridade: hospede no <b>Panda</b> e incorpore, ou use o <b>SafeVideo Imprint</b> (Eduzz) / o player nativo 4K da <b>TheMembers</b>. O <b>YouTube</b> (mesmo “não listado”) é a opção mais frágil.</p>
     </div>
     <p class="assump">* Preços da TheMembers vêm de fontes secundárias e devem ser confirmados; os valores em R$ dos planos do SafeVideo (Eduzz) não constam na central de ajuda.</p>
@@ -765,7 +784,7 @@
 <!-- ============ PLATAFORMAS ============ -->
 <section id="plataformas">
   <div class="wrap">
-    <span class="eyebrow">🧩 Plataforma por plataforma</span>
+    <span class="eyebrow"> Plataforma por plataforma</span>
     <h2 class="sec">Fichas <span class="hl">resumidas</span></h2>
     <p class="sec-intro">Cada ficha começa pelo essencial — nota, taxa em destaque e particularidade — seguida de pontos fortes/fracos e de como a plataforma apoia o seu negócio. Use os filtros para focar em uma delas. O botão <b>“Ver análise completa”</b> abrirá a aba detalhada (com vídeos) na próxima etapa.</p>
 
@@ -793,20 +812,20 @@
       </div>
       <div class="pbody">
         <div class="pfee">
-          <span class="tagfee">💰 Taxa</span>
+          <span class="tagfee"> Taxa</span>
           <span class="val">9,9% <small>+ R$1,00 / venda</small></span>
           <span class="note">A mais alta do grupo. Sem mensalidade, mas há taxa de ativação do player por venda (R$2,49 / R$0,50 na recorrência).</span>
         </div>
         <div class="block hl-accent">
-          <h5>✨ Particularidade</h5>
+          <h5> Particularidade</h5>
           <p>O ecossistema mais completo e a marca mais reconhecida do Brasil — o que aumenta a confiança (e a conversão) de um público mais velho e cauteloso. A área de membros (Club) já traz comunidade, gamificação e liberação de conteúdo por aluno.</p>
         </div>
         <div class="block">
-          <h5>🛍️ Vitrine na área de membros</h5>
+          <h5> Vitrine na área de membros</h5>
           <p><b>Completa.</b> Vitrine estilo Netflix, anúncio dentro da aula (Club Ads), seções de trilhas e — diferencial — <b>origem da venda rastreada</b> (“Club Sales”). Cobre quase tudo o que você pediu; só a recomendação automática ao fim do curso não é documentada.</p>
         </div>
         <div class="two">
-          <div class="sw-box pro"><h5>✅ Pontos fortes</h5>
+          <div class="sw-box pro"><h5> Pontos fortes</h5>
             <ul>
               <li>Maior marketplace de afiliados do país — alcance para escalar os cursos gravados.</li>
               <li>Recorrência madura: dunning, recuperador de adesão e turmas/coortes no Club.</li>
@@ -815,7 +834,7 @@
               <li>Internacional real (22 moedas) e proteção de conteúdo com DRM.</li>
             </ul>
           </div>
-          <div class="sw-box con"><h5>⚠️ Pontos fracos</h5>
+          <div class="sw-box con"><h5> Pontos fracos</h5>
             <ul>
               <li>Taxa mais alta (9,9% + R$1) + taxa de player — pesa no low ticket.</li>
               <li>IA conversacional de pré-checkout não é nativa (depende de integração).</li>
@@ -825,7 +844,7 @@
           </div>
         </div>
         <div class="block">
-          <h5>🎯 Como apoia o seu negócio</h5>
+          <h5> Como apoia o seu negócio</h5>
           <ul class="needs">
             <li><span class="nn">1</span><div><b>Funil low → mid:</b> order bump + funil de upsell/downsell + vitrine de produtos no Club.</div></li>
             <li><span class="nn">2</span><div><b>Lançamento “Origem”:</b> order bump da gravação no checkout e funil pós-evento que leva ao “Raízes”.</div></li>
@@ -854,20 +873,20 @@
       </div>
       <div class="pbody">
         <div class="pfee">
-          <span class="tagfee">💰 Taxa</span>
+          <span class="tagfee"> Taxa</span>
           <span class="val">4,99% <small>+ R$1,00 / venda</small></span>
           <span class="note">A menor do grupo full-service (3,99% no high ticket). Sem mensalidade; hospedagem de vídeo acima de 3GB é paga à parte.</span>
         </div>
         <div class="block hl-accent">
-          <h5>✨ Particularidade</h5>
+          <h5> Particularidade</h5>
           <p>É a sua plataforma atual. O <b>Closer.AI</b> (popup de saída no checkout + recuperação conversacional após o abandono) é justamente o recurso de IA que você valoriza — e manter-se nela significa <b>zero dor de migração</b>.</p>
         </div>
         <div class="block">
-          <h5>🛍️ Vitrine na área de membros</h5>
+          <h5> Vitrine na área de membros</h5>
           <p><b>Básica.</b> Tem vitrine de cursos, card com cadeado que abre um modal de venda e banner no Club. Mas <b>não há cross-sell dentro da aula, trilha/combo nem atribuição interna documentada</b> — o ponto que mais puxou a nota para baixo, já que é prioridade sua.</p>
         </div>
         <div class="two">
-          <div class="sw-box pro"><h5>✅ Pontos fortes</h5>
+          <div class="sw-box pro"><h5> Pontos fortes</h5>
             <ul>
               <li>Menor taxa do grupo full-service: 4,99% + R$1 — preserva margem no low ticket.</li>
               <li>Closer.AI nativa: recuperação conversacional de pré-checkout (a sua necessidade decisiva).</li>
@@ -876,7 +895,7 @@
               <li>Você já a domina — nenhuma migração necessária agora.</li>
             </ul>
           </div>
-          <div class="sw-box con"><h5>⚠️ Pontos fracos</h5>
+          <div class="sw-box con"><h5> Pontos fracos</h5>
             <ul>
               <li>Comunidade/fórum nativo fraco — pouco senso de pertencimento.</li>
               <li><b>Vitrine mais simples</b> e <b>sem atribuição de origem</b> documentada (seu critério prioritário).</li>
@@ -886,7 +905,7 @@
           </div>
         </div>
         <div class="block">
-          <h5>🎯 Como apoia o seu negócio</h5>
+          <h5> Como apoia o seu negócio</h5>
           <ul class="needs">
             <li><span class="nn">1</span><div><b>IA que você já usa:</b> mantém o diferencial de recuperação sem nenhum custo de troca.</div></li>
             <li><span class="nn">2</span><div><b>Recorrência “Raízes”:</b> cobrança recorrente + PIX Automático + dunning.</div></li>
@@ -915,20 +934,20 @@
       </div>
       <div class="pbody">
         <div class="pfee">
-          <span class="tagfee">💰 Taxa</span>
+          <span class="tagfee"> Taxa</span>
           <span class="val">2,99%–8,99% <small>+ R$2,50 / venda</small></span>
           <span class="note">Promoção de maio/2026: <b>0% no PIX e 2,99% no cartão</b> para quem contrata no mês. Fora da promoção, padrão de mercado (~8,99% cartão).</span>
         </div>
         <div class="block hl-accent">
-          <h5>✨ Particularidade</h5>
+          <h5> Particularidade</h5>
           <p>Ecossistema “premium”: app publicado nas lojas <b>com a sua marca</b>, área estilo Netflix, comunidade nativa e <b>Recovery IA que conversa no WhatsApp</b> — e a migração é feita pela equipe deles, com CS dedicado.</p>
         </div>
         <div class="block">
-          <h5>🛍️ Vitrine na área de membros</h5>
+          <h5> Vitrine na área de membros</h5>
           <p><b>Forte.</b> Carrosséis de cursos, conteúdo com <b>cadeado + botão de compra</b>, anúncios internos e <b>trilha que sugere o próximo passo</b> ao concluir. A atribuição interna (origem exata da venda) ainda precisa ser confirmada com o suporte.</p>
         </div>
         <div class="two">
-          <div class="sw-box pro"><h5>✅ Pontos fortes</h5>
+          <div class="sw-box pro"><h5> Pontos fortes</h5>
             <ul>
               <li>App próprio com a SUA marca (ícone na tela do celular) — excelente para 35–55.</li>
               <li>Recovery IA conversacional no WhatsApp — equivale ou supera o Closer.AI.</li>
@@ -937,7 +956,7 @@
               <li>ThePlayer 4K antipirataria + offline; promoção de maio derruba o custo.</li>
             </ul>
           </div>
-          <div class="sw-box con"><h5>⚠️ Pontos fracos</h5>
+          <div class="sw-box con"><h5> Pontos fracos</h5>
             <ul>
               <li>Taxa padrão alta fora da promoção; preços negociados (menos transparência).</li>
               <li>Sem marketplace público de afiliados.</li>
@@ -947,7 +966,7 @@
           </div>
         </div>
         <div class="block">
-          <h5>🎯 Como apoia o seu negócio</h5>
+          <h5> Como apoia o seu negócio</h5>
           <ul class="needs">
             <li><span class="nn">1</span><div><b>Público 35–55:</b> app com a sua marca reduz fricção e transmite autoridade acolhedora.</div></li>
             <li><span class="nn">2</span><div><b>Recuperação por IA:</b> o recurso que você valoriza, já nativo e no WhatsApp.</div></li>
@@ -976,20 +995,20 @@
       </div>
       <div class="pbody">
         <div class="pfee">
-          <span class="tagfee">💰 Taxa</span>
+          <span class="tagfee"> Taxa</span>
           <span class="val">8,9% <small>+ R$2,49 / venda</small></span>
           <span class="note">Transparente e regressiva (cai para 7,9% conforme o faturamento). +R$0,99 por fatura quando o produto tem grupo. PIX/boleto D+2.</span>
         </div>
         <div class="block hl-accent">
-          <h5>✨ Particularidade</h5>
+          <h5> Particularidade</h5>
           <p>Une checkout + área de membros + <b>gestão automática de grupos de WhatsApp/Telegram</b> — entra e remove a aluna do grupo conforme o pagamento. Para um público que já vive no WhatsApp, é o caminho de menor atrito para criar pertencimento.</p>
         </div>
         <div class="block">
-          <h5>🛍️ Vitrine na área de membros</h5>
+          <h5> Vitrine na área de membros</h5>
           <p><b>Fraca.</b> Tem banner principal e vitrine de produtos, mas <b>sem cadeado-teaser, sem cross-sell na aula, sem trilha/combo e sem atribuição dedicada</b>. O forte aqui é a comunidade no WhatsApp, não a vitrine interna.</p>
         </div>
         <div class="two">
-          <div class="sw-box pro"><h5>✅ Pontos fortes</h5>
+          <div class="sw-box pro"><h5> Pontos fortes</h5>
             <ul>
               <li>Grupos de WhatsApp/Telegram automáticos — ambiente familiar ao público 35–55.</li>
               <li>Recorrência com dunning bem documentado (cartão e PIX); turmas opcionais.</li>
@@ -997,7 +1016,7 @@
               <li>Onboarding/migração em até 48h; área de membros estilo Netflix gratuita.</li>
             </ul>
           </div>
-          <div class="sw-box con"><h5>⚠️ Pontos fracos</h5>
+          <div class="sw-box con"><h5> Pontos fracos</h5>
             <ul>
               <li>Sem IA conversacional de pré-checkout (só Parcelamento Inteligente).</li>
               <li>App é da marca Hubla (não white-label).</li>
@@ -1007,7 +1026,7 @@
           </div>
         </div>
         <div class="block">
-          <h5>🎯 Como apoia o seu negócio</h5>
+          <h5> Como apoia o seu negócio</h5>
           <ul class="needs">
             <li><span class="nn">1</span><div><b>Comunidade do “Raízes”:</b> grupo de WhatsApp gerido automaticamente — natural para o público.</div></li>
             <li><span class="nn">2</span><div><b>Entrada aberta:</b> a aluna entra a qualquer momento e o grupo de WhatsApp já a acolhe na comunidade.</div></li>
@@ -1018,7 +1037,7 @@
         <div class="pfoot">
           <span class="docs">Docs: <a href="https://help.hub.la/hc/pt-br/quais-s%C3%A3o-as-taxas-da-hubla" target="_blank" rel="noopener">taxas</a> · <a href="https://help.hub.la/hc/pt-br/como-funcionam-as-assinaturas-na-hubla" target="_blank" rel="noopener">assinaturas</a></span>
           <span style="display:flex;align-items:center;gap:12px">
-            <span class="soon-msg" style="display:none;font-size:13px;color:var(--muted);font-weight:700">Aba detalhada chega na próxima etapa 🚧</span>
+            <span class="soon-msg" style="display:none;font-size:13px;color:var(--muted);font-weight:700">Aba detalhada chega na próxima etapa </span>
             <a class="btn btn-accent" href="javascript:void(0)" onclick="soon(this)">Ver análise completa <span class="arw">→</span></a>
           </span>
         </div>
@@ -1039,20 +1058,20 @@
       </div>
       <div class="pbody">
         <div class="pfee">
-          <span class="tagfee">💰 Taxa</span>
+          <span class="tagfee"> Taxa</span>
           <span class="val">4,9% <small>+ R$2,49 / venda</small></span>
           <span class="note">Baixa, mas o <b>SafeVideo cobra R$3,99 por aluno</b> + plano de armazenamento — some isso ao custo real. PIX/boleto em até 2 dias.</span>
         </div>
         <div class="block hl-accent">
-          <h5>✨ Particularidade</h5>
+          <h5> Particularidade</h5>
           <p>Tem o <b>melhor painel de recorrência</b> (MRR, churn, churn trial, LTV) e uma política que <b>permite explicitamente serviços de saúde mental e coach</b> online — um alívio para o seu método. Recuperação RVP por e-mail e WhatsApp.</p>
         </div>
         <div class="block">
-          <h5>🛍️ Vitrine na área de membros <span style="font-size:11px;color:var(--eduzz-dark);font-weight:800">★ a mais completa</span></h5>
+          <h5> Vitrine na área de membros <span style="font-size:11px;color:var(--eduzz-dark);font-weight:800">★ a mais completa</span></h5>
           <p><b>Campeã.</b> O recurso “Anúncios” faz <b>banner na aula</b>, <b>banner na home</b>, <b>pop-up ao fim do curso</b> e seção “Recomendados” — e mostra <b>visualizações, cliques e vendas por anúncio</b>. É exatamente o conjunto que você descreveu, já com atribuição.</p>
         </div>
         <div class="two">
-          <div class="sw-box pro"><h5>✅ Pontos fortes</h5>
+          <div class="sw-box pro"><h5> Pontos fortes</h5>
             <ul>
               <li>Taxa baixa (4,9% + R$2,49) e liberação de PIX/boleto em até 2 dias.</li>
               <li>Painel de assinaturas completo: MRR, churn, churn trial e LTV.</li>
@@ -1060,7 +1079,7 @@
               <li>Política permite saúde mental/coach; app Nutror + DRM Social + offline.</li>
             </ul>
           </div>
-          <div class="sw-box con"><h5>⚠️ Pontos fracos</h5>
+          <div class="sw-box con"><h5> Pontos fracos</h5>
             <ul>
               <li>SafeVideo cobra por aluno + armazenamento — eleva o custo real.</li>
               <li>Checkout internacional não suporta recorrência/serviços (o “Raízes” não venderia fora).</li>
@@ -1070,7 +1089,7 @@
           </div>
         </div>
         <div class="block">
-          <h5>🎯 Como apoia o seu negócio</h5>
+          <h5> Como apoia o seu negócio</h5>
           <ul class="needs">
             <li><span class="nn">1</span><div><b>Recorrência “Raízes”:</b> métricas de churn/MRR e dunning para gerir cada ciclo.</div></li>
             <li><span class="nn">2</span><div><b>Conteúdo sensível:</b> saúde mental permitida — só evitar promessas de “cura”.</div></li>
@@ -1099,20 +1118,20 @@
       </div>
       <div class="pbody">
         <div class="pfee">
-          <span class="tagfee">💰 Taxa</span>
+          <span class="tagfee"> Taxa</span>
           <span class="val">8,99% <small>+ R$2,49 / venda</small></span>
           <span class="note">Modelo único, sem mensalidade. Hospedagem de vídeo (até 4K) e área de membros inclusas. PIX/boleto D+2, cartão D+15 (ou D+2 com antecipação a 2%).</span>
         </div>
         <div class="block hl-accent">
-          <h5>✨ Particularidade</h5>
+          <h5> Particularidade</h5>
           <p>A plataforma mais <b>simples e rápida de operar</b>, com suporte humano respondendo em ~1 minuto, 7 dias por semana — boa para quem não quer complexidade técnica. Área de membros “cinematográfica” estilo streaming.</p>
         </div>
         <div class="block">
-          <h5>🛍️ Vitrine na área de membros</h5>
+          <h5> Vitrine na área de membros</h5>
           <p><b>Boa.</b> Vende cursos na própria área com <b>cadeado → checkout em 1 clique</b>, monta <b>combos</b> e marca as vendas com UTM interna (atribuição simples). Falta cross-sell dentro da aula e recomendação ao fim do curso.</p>
         </div>
         <div class="two">
-          <div class="sw-box pro"><h5>✅ Pontos fortes</h5>
+          <div class="sw-box pro"><h5> Pontos fortes</h5>
             <ul>
               <li>Fácil de usar; comece a vender em poucos minutos.</li>
               <li>Suporte chat 7 dias, 8h–21h, resposta em ~1 minuto.</li>
@@ -1120,7 +1139,7 @@
               <li>Marketplace de afiliados grande; PIX/boleto D+2.</li>
             </ul>
           </div>
-          <div class="sw-box con"><h5>⚠️ Pontos fracos</h5>
+          <div class="sw-box con"><h5> Pontos fracos</h5>
             <ul>
               <li>Sem cross-sell dentro da aula nem recomendação ao fim do curso.</li>
               <li>IA e WhatsApp de recuperação só via integrações pagas de terceiros.</li>
@@ -1130,7 +1149,7 @@
           </div>
         </div>
         <div class="block">
-          <h5>🎯 Como apoia o seu negócio</h5>
+          <h5> Como apoia o seu negócio</h5>
           <ul class="needs">
             <li><span class="nn">1</span><div><b>Funil low → mid:</b> order bump + upsell 1-clique entre os mais fáceis de configurar.</div></li>
             <li><span class="nn">2</span><div><b>Operação enxuta:</b> menos fricção técnica para o dia a dia.</div></li>
@@ -1141,7 +1160,7 @@
         <div class="pfoot">
           <span class="docs">Docs: <a href="https://ajuda.kiwify.com.br/pt-br/article/quais-sao-as-taxas-da-plataforma-1ems3wq/" target="_blank" rel="noopener">taxas</a> · <a href="https://ajuda.kiwify.com.br/pt-br/article/assinaturas-1okaw5z/" target="_blank" rel="noopener">assinaturas</a></span>
           <span style="display:flex;align-items:center;gap:12px">
-            <span class="soon-msg" style="display:none;font-size:13px;color:var(--muted);font-weight:700">Aba detalhada chega na próxima etapa 🚧</span>
+            <span class="soon-msg" style="display:none;font-size:13px;color:var(--muted);font-weight:700">Aba detalhada chega na próxima etapa </span>
             <a class="btn btn-accent" href="javascript:void(0)" onclick="soon(this)">Ver análise completa <span class="arw">→</span></a>
           </span>
         </div>
@@ -1161,56 +1180,56 @@
 <!-- ============ INSIGHTS ============ -->
 <section id="insights" class="acc-brand">
   <div class="wrap">
-    <span class="eyebrow">💡 Aplicado ao seu negócio</span>
+    <span class="eyebrow"> Aplicado ao seu negócio</span>
     <h2 class="sec">Insights estratégicos <span class="hl">para o seu caso</span></h2>
     <p class="sec-intro">Análise sob a ótica do seu contexto: mulheres cristãs 35–55, baixa fluência digital, consumo mobile, tom acolhedor, jornada low → mid ticket, lançamento ao vivo “Origem” e terapia em grupo recorrente “Raízes” (com entrada aberta).</p>
 
     <div class="igrid">
 
       <div class="icard">
-        <h4><span class="ic">👵</span>Adequação ao público (35–55, mobile)</h4>
+        <h4><span class="ic"></span>Adequação ao público (35–55, mobile)</h4>
         <p>Para um público com baixa fluência digital que consome pelo celular, um <b>app nativo dedicado</b> reduz muito a fricção (ícone na tela inicial, sem “achar o link”).</p>
         <p><span class="pill" style="background:var(--members-soft);color:var(--members-dark)">TheMembers</span> lidera (app com a sua marca). <span class="pill" style="background:var(--hotmart-soft);color:var(--hotmart-dark)">Hotmart</span>, <span class="pill" style="background:var(--greenn-soft);color:var(--greenn-dark)">Greenn</span>, <span class="pill" style="background:var(--eduzz-soft);color:var(--eduzz-dark)">Eduzz</span> e <span class="pill" style="background:var(--kiwify-soft);color:var(--kiwify-dark)">Kiwify</span> também têm app nativo.</p>
       </div>
 
       <div class="icard">
-        <h4><span class="ic">🎨</span>Tom da marca (acolhedor, não “agressivo”)</h4>
+        <h4><span class="ic"></span>Tom da marca (acolhedor, não “agressivo”)</h4>
         <p>Para manter a estética inspiradora e evitar o visual padrão “de vendas”, conta a liberdade de personalização da área de membros.</p>
         <p><span class="pill" style="background:var(--members-soft);color:var(--members-dark)">TheMembers</span> e <span class="pill" style="background:var(--kiwify-soft);color:var(--kiwify-dark)">Kiwify</span> (editor de código) oferecem mais customização visual; <span class="pill" style="background:var(--hotmart-soft);color:var(--hotmart-dark)">Hotmart</span> tem temas prontos. Todas permitem logo e cores próprias.</p>
       </div>
 
       <div class="icard">
-        <h4><span class="ic">🪜</span>Funil low → mid ticket</h4>
+        <h4><span class="ic"></span>Funil low → mid ticket</h4>
         <p>Order bump, upsell, trilhas e segmentação sustentam quem compra a “Livre-se da culpa” e depois é convidado ao mid ticket.</p>
         <p>Todas têm order bump + upsell. Para ofertar <b>dentro da área de membros</b> (veja a seção “Vitrine”), <span class="pill" style="background:var(--eduzz-soft);color:var(--eduzz-dark)">Eduzz</span> e <span class="pill" style="background:var(--hotmart-soft);color:var(--hotmart-dark)">Hotmart</span> lideram (anúncio na aula + atribuição), <span class="pill" style="background:var(--members-soft);color:var(--members-dark)">TheMembers</span> tem funil interno forte e <span class="pill" style="background:var(--kiwify-soft);color:var(--kiwify-dark)">Kiwify</span> faz combos.</p>
       </div>
 
       <div class="icard">
-        <h4><span class="ic">🔴</span>Funil de lançamento ao vivo (“Origem” → “Raízes”)</h4>
+        <h4><span class="ic"></span>Funil de lançamento ao vivo (“Origem” → “Raízes”)</h4>
         <p>O mecanismo-chave — vender o ingresso da aula ao vivo e oferecer a gravação como <b>order bump</b> — é viável em todas. A gravação pode ser entregue como produto adicional, liberado após o evento.</p>
         <p>Para abertura/fechamento de carrinho e replay com prazo, <span class="pill" style="background:var(--hotmart-soft);color:var(--hotmart-dark)">Hotmart</span> e <span class="pill" style="background:var(--greenn-soft);color:var(--greenn-dark)">Greenn</span> são as mais maduras hoje.</p>
       </div>
 
       <div class="icard">
-        <h4><span class="ic">🔁</span>Recorrência do “Raízes” (entrada aberta)</h4>
+        <h4><span class="ic"></span>Recorrência do “Raízes” (entrada aberta)</h4>
         <p>Como a entrada é aberta, o que importa não é turma fechada, e sim cobrança recorrente, dunning e <b>acesso individual</b> por data de matrícula de cada aluna, com liberação programada de conteúdo.</p>
         <p>Todas atendem o acesso individual. Métricas de churn/MRR mais completas: <span class="pill" style="background:var(--eduzz-soft);color:var(--eduzz-dark)">Eduzz</span>. Dunning bem documentado: <span class="pill" style="background:var(--hubla-soft);color:var(--hubla-dark)">Hubla</span>. PIX Automático: <span class="pill" style="background:var(--greenn-soft);color:var(--greenn-dark)">Greenn</span>. Turmas seguem opcionais em Hotmart/Hubla, mas deixam de ser requisito.</p>
       </div>
 
       <div class="icard">
-        <h4><span class="ic">👥</span>Comunidade e relacionamento (LTV)</h4>
+        <h4><span class="ic"></span>Comunidade e relacionamento (LTV)</h4>
         <p>O público busca pertencimento — comunidade aumenta retenção e o tempo de permanência no “Raízes”.</p>
         <p><span class="pill" style="background:var(--hubla-soft);color:var(--hubla-dark)">Hubla</span> (grupos WhatsApp/Telegram, familiar ao público) e <span class="pill" style="background:var(--members-soft);color:var(--members-dark)">TheMembers</span> (feed + canais nativos) lideram. <span class="pill" style="background:var(--hotmart-soft);color:var(--hotmart-dark)">Hotmart</span> tem comunidade + gamificação no Club.</p>
       </div>
 
       <div class="icard">
-        <h4><span class="ic">🚫</span>Restrições — fé cristã e saúde mental</h4>
+        <h4><span class="ic"></span>Restrições — fé cristã e saúde mental</h4>
         <p>Nenhuma proíbe conteúdo cristão. A sensibilidade é com <b>saúde mental</b>: evite prometer “cura”.</p>
         <p><span class="pill" style="background:var(--eduzz-soft);color:var(--eduzz-dark)">Eduzz</span> permite explicitamente serviços de saúde mental/coach. <span class="pill" style="background:var(--greenn-soft);color:var(--greenn-dark)">Greenn</span> não tem restrição ao nicho. <span class="pill" style="background:var(--hotmart-soft);color:var(--hotmart-dark)">Hotmart</span>/<span class="pill" style="background:var(--kiwify-soft);color:var(--kiwify-dark)">Kiwify</span> vetam promessas anticientíficas — posicione como desenvolvimento pessoal, não tratamento clínico.</p>
       </div>
 
       <div class="icard">
-        <h4><span class="ic">🔄</span>Custo e dor de migração + momento</h4>
+        <h4><span class="ic"></span>Custo e dor de migração + momento</h4>
         <p>Como o “Raízes” <b>ainda não começou</b>, não há base de assinantes a migrar — este é o momento ideal para decidir e evitar uma troca dolorosa depois.</p>
         <p>Migração assistida: <span class="pill" style="background:var(--members-soft);color:var(--members-dark)">TheMembers</span> (feita por eles) e <span class="pill" style="background:var(--hubla-soft);color:var(--hubla-dark)">Hubla</span> (48h). A Greenn permite exportar suas vendas (lista de compradores).</p>
       </div>
@@ -1218,7 +1237,7 @@
     </div>
 
     <div style="margin-top:34px">
-      <h3 style="font-size:22px;font-weight:840;letter-spacing:-.01em;margin:0 0 6px">💵 Simulação de custo real <span style="color:var(--brand)">(cenário ilustrativo)</span></h3>
+      <h3 style="font-size:22px;font-weight:840;letter-spacing:-.01em;margin:0 0 6px"> Simulação de custo real <span style="color:var(--brand)">(cenário ilustrativo)</span></h3>
       <p class="sec-intro" style="margin-bottom:18px">Mês-modelo com o seu mix: <b>100 vendas low ticket (R$67)</b> + <b>30 mid ticket (R$397)</b> + <b>50 assinantes recorrentes (R$197)</b> = <b>R$28.460 brutos</b> / 180 transações / ~130 alunos novos. Quanto sobraria líquido após as taxas de cada plataforma:</p>
       <div class="cost-wrap">
         <table class="cost">
@@ -1243,7 +1262,7 @@
 <!-- ============ RECOMENDAÇÃO ============ -->
 <section id="recomendacao">
   <div class="wrap">
-    <span class="eyebrow">🎯 Veredito</span>
+    <span class="eyebrow"> Veredito</span>
     <h2 class="sec">Recomendação final — <span class="hl">trocar agora ou ficar na Greenn?</span></h2>
 
     <div class="banner" style="margin-bottom:24px">
@@ -1274,7 +1293,7 @@
     </div>
 
     <div class="block acc-hotmart hl-accent" style="margin-top:8px">
-      <h5>🥉 Se a vitrine pesar acima de tudo — Hotmart ou Eduzz</h5>
+      <h5> Se a vitrine pesar acima de tudo — Hotmart ou Eduzz</h5>
       <p>Como vitrine e atribuição são prioritárias, valem as duas líderes nesse quesito: a <b>Hotmart</b> (anúncio na aula + origem “Club Sales” + confiança máxima no checkout, com o custo mais alto como contrapartida) e a <b>Eduzz</b> (a vitrine mais completa — banner na aula, pop-up ao fim do curso e métricas por anúncio — taxa baixa e política que permite saúde mental; lembre do custo do SafeVideo por aluno).</p>
     </div>
 
@@ -1318,7 +1337,7 @@
         </ul>
       </div>
     </div>
-    <p class="disc">⚠️ Dados coletados em maio/2026 a partir das centrais de ajuda e páginas oficiais de cada plataforma. Taxas, prazos e recursos mudam com frequência e alguns itens devem ser confirmados diretamente com cada empresa antes da decisão. As notas refletem o ajuste ao seu negócio específico, não uma avaliação universal. Cor da Kiwify exibida em roxo por escolha de leitura (a marca real usa verde) — ajustável.</p>
+    <p class="disc"> Dados coletados em maio/2026 a partir das centrais de ajuda e páginas oficiais de cada plataforma. Taxas, prazos e recursos mudam com frequência e alguns itens devem ser confirmados diretamente com cada empresa antes da decisão. As notas refletem o ajuste ao seu negócio específico, não uma avaliação universal. Cor da Kiwify exibida em roxo por escolha de leitura (a marca real usa verde) — ajustável.</p>
   </div>
 </footer>
 
@@ -1344,6 +1363,16 @@
     });
     document.getElementById('plataformas').scrollIntoView({behavior:'smooth',block:'start'});
   }
+</script>
+
+<script>
+(function(){
+  try{
+    if(!('IntersectionObserver' in window)){document.documentElement.classList.remove('anim');return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rank,.pcard,.icard,.banner,.matrix-wrap,.cost-wrap,.feat').forEach(function(el){io.observe(el);});
+  }catch(err){document.documentElement.classList.remove('anim');}
+})();
 </script>
 </body>
 </html> 

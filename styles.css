@@ -162,3 +162,21 @@ footer{background:var(--dark);color:#C9C2CE;padding:34px 0 44px;margin-top:26px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
 footer a{color:#B9D9D4;text-decoration:none;font-weight:700}
 footer .disc{font-size:12px;color:#8E8794;margin-top:18px;border-top:1px solid #3A3540;padding-top:16px;line-height:1.6}
+
+/* ===== Navegação fluida + ícones minimalistas ===== */
+/* revelar ao rolar (só ativa com JS; sem JS, tudo visível) */
+html.anim .feat,html.anim .icard,html.anim .pcard,html.anim .rank,html.anim .banner,html.anim .matrix-wrap,html.anim .cost-wrap{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .55s cubic-bezier(.2,.75,.25,1)}
+html.anim .is-in{opacity:1 !important;transform:none !important}
+@media (prefers-reduced-motion:reduce){html.anim .feat,html.anim .icard,html.anim .pcard,html.anim .rank,html.anim .banner,html.anim .matrix-wrap,html.anim .cost-wrap{opacity:1;transform:none;transition:none}}
+/* hover/transições fluidas */
+.feat{transition:opacity .6s ease, transform .3s cubic-bezier(.2,.75,.25,1), box-shadow .25s, border-color .25s}
+.feat:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.toc-list a{transition:background .18s, color .18s, transform .16s}
+.toc-list a:hover{transform:translateX(3px)}
+.docbtn{transition:.2s} .docbtn:hover{transform:translateX(2px)}
+.back{transition:.18s} .back:hover{transform:translateX(-3px)}
+.btn{transition:transform .18s, filter .18s, box-shadow .18s}
+.optable tr{transition:background .15s}
+/* ícones minimalistas: esconder os badges de emoji; estrutura passa a ser a borda de acento */
+.feat > .fhead .ic{display:none}
+.feat{border-left:3px solid color-mix(in srgb, var(--accent) 30%, var(--line))}
