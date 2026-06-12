@@ -98,6 +98,21 @@
   .navmap .nm-mio .r .path{color:#FFC4B4;font-weight:740}
   .navmap .nm-foot2{margin:16px 0 0;font-size:12.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:13px}
   @media(max-width:720px){.navmap .nm-mrow{grid-template-columns:1fr;gap:7px;padding-left:24px}.navmap .nm-rows{margin-left:18px}.navmap .nm-grid{grid-template-columns:1fr}}
+
+  /* ===== Links das seções de tutorial (mapa ↔ tutorial · âncora) ===== */
+  .guide-main section{scroll-margin-top:82px}
+  .feat{scroll-margin-top:82px}
+  .feat .ft h3 .permalink{margin-left:8px;font-size:14px;font-weight:800;color:var(--accent);text-decoration:none;opacity:0;transition:opacity .15s;vertical-align:middle}
+  .feat:hover .ft h3 .permalink{opacity:.5}
+  .feat .ft h3 .permalink:hover,.feat .ft h3 .permalink:focus{opacity:1;outline:none}
+  a.loc{display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-size:12px;font-weight:740;color:var(--accent-dark);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 28%,transparent);border-radius:999px;padding:4px 12px;text-decoration:none;transition:background .15s,transform .15s}
+  a.loc:hover{background:var(--surface);transform:translateX(2px)}
+  a.loc .loc-l{font-size:9.5px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;opacity:.72}
+  #mapa .nm-chip.goto{cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;text-decoration-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+  #mapa .nm-chip.goto:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  #mapa .nm-chip.goto:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @keyframes featflash{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}40%{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 38%,transparent)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
+  .feat.flash{animation:featflash 1.7s ease}
   .hide{display:none !important}
   .no-result{display:none;background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--radius);padding:22px;text-align:center;color:var(--muted);font-weight:700;margin:20px 0}
   @media(max-width:900px){
@@ -986,6 +1001,79 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.feat,.icard,.pcard,.rank,.banner,.matrix-wrap,.cost-wrap').forEach(function(el){io.observe(el);});
   }catch(err){document.documentElement.classList.remove('anim');}
+})();
+</script>
+
+<script>
+(function(){
+  var main=document.querySelector('.guide-main'); if(!main) return;
+  var cards=[].slice.call(main.querySelectorAll('.feat'));
+  function slug(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,44);}
+  var paths=[
+    ['criar a conta','Produtos › Criar produto'],
+    ['montar a área de membros','Produtos › Área de Membros'],
+    ['personalizar o checkout','Ferramentas › Página de pagamento'],
+    ['formas de pagamento','Ferramentas › Página de pagamento'],
+    ['variação de ofertas','Produtos › ofertas do produto'],
+    ['domínio próprio','Club › Configurações › domínio'],
+    ['produto de assinatura','Produtos › Criar produto (Assinatura)'],
+    ['liberar conteúdo por data','Club › Produtos (liberação por etapas)'],
+    ['webinário','Ferramentas › Eventos online'],
+    ['vitrine, anúncio na aula','Club › Vendas › Anúncios + Produtos › Vitrine'],
+    ['order bump no checkout','Ferramentas › Order bump'],
+    ['upsell one-click','Ferramentas › Funil de vendas'],
+    ['segmentação de ofertas','Club › Vendas › Desconto por audiência'],
+    ['comunidade e gamificação','Club › Comunidades / Gamificação'],
+    ['afiliados e marketplace','Mercado de Afiliados'],
+    ['suporte ao produtor','Ajuda / Suporte'],
+    ['dashboard e métricas','Vendas › Analytics'],
+    ['e-mail e automação','Ferramentas › Hotmart Send'],
+    ['recuperação de vendas','Vendas › Recuperação'],
+    ['pixel do meta','Ferramentas › Pixel'],
+    ['cupom de desconto','Ferramentas › Cupons'],
+    ['saque e antecipação','Ferramentas Financeiras › Saque'],
+    ['nota fiscal','Ferramentas Financeiras (integração eNotas)'],
+    ['migrar as alunas','Produtos › importar alunos (CSV)'],
+    ['enquadramento e onde hospedar','Produtos › Criar produto (Assinatura)'],
+    ['liberar (e revogar) acesso','Ferramentas › Webhook / API']
+  ];
+  function pathFor(t){t=t.toLowerCase();for(var i=0;i<paths.length;i++){if(t.indexOf(paths[i][0])>=0)return paths[i][1];}return null;}
+  cards.forEach(function(card){
+    var h3=card.querySelector('.ft h3'); if(!h3) return;
+    if(!card.id) card.id='t-'+slug(h3.textContent.replace(/#/g,''));
+    var pl=document.createElement('a'); pl.className='permalink'; pl.href='#'+card.id; pl.textContent='#'; pl.title='Link direto para este tutorial'; pl.setAttribute('aria-label','Link para este tutorial');
+    h3.appendChild(pl);
+    var p=pathFor(h3.textContent);
+    if(p){var ft=card.querySelector('.ft'); if(ft){var a=document.createElement('a'); a.className='loc'; a.href='#mapa'; a.innerHTML='<span class="loc-l">no painel</span> '+p; a.title='Ver no Mapa de navegação'; ft.appendChild(a);}}
+  });
+  var links=[
+    ['order bump','order bump no checkout'],['cupons','cupom de desconto'],
+    ['funil de vendas','upsell one-click'],['pixel','pixel do meta'],
+    ['hotmart send','e-mail e automação'],['eventos online','webinário'],
+    ['assinaturas','produto de assinatura'],['recuperação','recuperação de vendas'],
+    ['analytics','dashboard e métricas'],['afiliados','afiliados e marketplace'],
+    ['saque','saque e antecipação'],['vitrine','vitrine, anúncio na aula'],
+    ['anúncios no curso','vitrine, anúncio na aula'],['desconto por audiência','segmentação de ofertas'],
+    ['gamificação','comunidade e gamificação'],['criar produto','criar a conta'],
+    ['área de membros','montar a área de membros'],['hotlinks','afiliados e marketplace']
+  ];
+  function findCard(key){key=key.toLowerCase();for(var i=0;i<cards.length;i++){var h=cards[i].querySelector('.ft h3'); if(h&&h.textContent.toLowerCase().indexOf(key)>=0)return cards[i];}return null;}
+  var searchInput=document.querySelector('.toc-search');
+  function jump(card){ if(!card) return; if(searchInput&&searchInput.value){searchInput.value='';searchInput.dispatchEvent(new Event('input'));} card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash'); setTimeout(function(){card.classList.remove('flash');},1800); }
+  var chips=[].slice.call(document.querySelectorAll('#mapa .nm-chip'));
+  chips.forEach(function(chip){
+    var txt=chip.textContent.toLowerCase();
+    for(var i=0;i<links.length;i++){
+      if(txt.indexOf(links[i][0])>=0){
+        var target=findCard(links[i][1]);
+        if(target){
+          chip.classList.add('goto'); chip.setAttribute('role','link'); chip.setAttribute('tabindex','0'); chip.title='Ir para o tutorial';
+          (function(tg){ chip.addEventListener('click',function(){jump(tg);}); chip.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();jump(tg);}}); })(target);
+        }
+        break;
+      }
+    }
+  });
 })();
 </script>
 </body>
