@@ -1040,7 +1040,8 @@
   function pathFor(t){t=t.toLowerCase();for(var i=0;i<paths.length;i++){if(t.indexOf(paths[i][0])>=0)return paths[i][1];}return null;}
   cards.forEach(function(card){
     var h3=card.querySelector('.ft h3'); if(!h3) return;
-    if(!card.id) card.id='t-'+slug(h3.textContent.replace(/#/g,''));
+    var ttl=(h3.firstChild&&h3.firstChild.nodeType===3)?h3.firstChild.textContent:h3.textContent;
+    if(!card.id) card.id='t-'+slug(ttl);
     var pl=document.createElement('a'); pl.className='permalink'; pl.href='#'+card.id; pl.textContent='#'; pl.title='Link direto para este tutorial'; pl.setAttribute('aria-label','Link para este tutorial');
     h3.appendChild(pl);
     var p=pathFor(h3.textContent);
