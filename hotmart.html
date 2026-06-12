@@ -23,7 +23,81 @@
   .guide-main{flex:1;min-width:0;display:flex;flex-direction:column}
   .guide-main .wrap{max-width:100%;margin:0;padding:0}
   /* ordem cronológica de implementação (reordena visualmente sem mover o HTML) */
-  #setup{order:1}#vitrine{order:2}#recorrencia{order:3}#origem{order:4}#operacional{order:5}#relacionamento{order:6}#saas{order:7}#problemas{order:8}#resumo{order:9}
+  #mapa{order:0}#setup{order:1}#vitrine{order:2}#recorrencia{order:3}#origem{order:4}#operacional{order:5}#relacionamento{order:6}#saas{order:7}#problemas{order:8}#resumo{order:9}
+
+  /* ===== Mapa de navegação (mind map + mapa detalhado) ===== */
+  .navmap{--graf:#39323F;--graf-line:#C7BDC4;--hotl:#F2B7A6}
+  .navmap .nm-legend{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 4px;font-size:13.5px;color:var(--ink-soft)}
+  .navmap .nm-legend .it{display:flex;align-items:center;gap:8px}
+  .navmap .nm-sw{width:22px;height:11px;border-radius:4px;flex:0 0 auto}
+  .navmap .nm-sw.g{background:var(--graf)}.navmap .nm-sw.h{background:var(--accent)}.navmap .nm-sw.k{background:var(--accent-soft);border:1.5px solid var(--accent)}
+  .navmap .nm-canvas{margin:16px 0 8px}
+  .navmap .nm-ctr{display:flex;flex-direction:column;align-items:center;gap:2px;width:240px;margin:0 auto;background:var(--dark);color:#fff;border-radius:16px;padding:13px 18px;box-shadow:var(--shadow);text-align:center}
+  .navmap .nm-ctr b{font-size:16px;font-weight:850;letter-spacing:.04em}
+  .navmap .nm-ctr span{font-size:11px;color:#C9C2CE}
+  .navmap .nm-stem{width:3px;height:22px;background:var(--line);margin:0 auto}
+  .navmap .nm-gateway{display:flex;flex-direction:column;align-items:center;margin:10px 0 4px}
+  .navmap .nm-gline{width:3px;height:15px;background:var(--hotl)}
+  .navmap .nm-gpill{background:var(--accent-soft);border:1.5px solid var(--accent);color:var(--accent-dark);font-size:13px;font-weight:740;padding:10px 18px;border-radius:14px;text-align:center;max-width:600px;line-height:1.5}
+  .navmap .nm-gpill .nm-lbl{display:block;font-size:10.5px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+  .navmap .nm-gpill b{color:var(--ink);font-weight:820}
+  .navmap .nm-garrow{width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:12px solid var(--accent);margin-top:3px}
+  .navmap .nm-branch{margin:0 0 8px}
+  .navmap .nm-hub{display:inline-flex;flex-direction:column;gap:1px;color:#fff;border-radius:13px;padding:10px 17px;box-shadow:var(--shadow);margin-left:8px}
+  .navmap .nm-hub b{font-size:14.5px;font-weight:850}.navmap .nm-hub span{font-size:11px;opacity:.85}
+  .navmap .nm-painel .nm-hub{background:var(--graf)}.navmap .nm-club .nm-hub{background:var(--accent)}
+  .navmap .nm-rows{position:relative;margin:0 0 0 30px;border-left:3px solid var(--graf-line);padding-top:6px}
+  .navmap .nm-club .nm-rows{border-left-color:var(--hotl)}
+  .navmap .nm-mrow{position:relative;display:grid;grid-template-columns:182px 1fr;gap:15px;align-items:start;padding:9px 0 9px 28px}
+  .navmap .nm-mrow::before{content:"";position:absolute;left:0;top:22px;width:24px;height:3px;border-radius:2px;background:var(--graf-line)}
+  .navmap .nm-club .nm-mrow::before{background:var(--hotl)}
+  .navmap .nm-mrow::after{content:"";position:absolute;left:-6px;top:18px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--graf-line)}
+  .navmap .nm-club .nm-mrow::after{border-color:var(--hotl)}
+  .navmap .nm-mnode{background:var(--graf);color:#fff;border-radius:11px;padding:8px 13px;font-size:14px;font-weight:780;align-self:start}
+  .navmap .nm-club .nm-mnode{background:var(--accent)}
+  .navmap .nm-chips{display:flex;flex-wrap:wrap;gap:7px;padding-top:2px}
+  .navmap .nm-chip{background:#fff;border:1.5px solid var(--graf-line);color:var(--ink-soft);border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:600;line-height:1.3}
+  .navmap .nm-club .nm-chip{border-color:var(--hotl)}
+  .navmap .nm-chip.k{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:760}
+  .navmap .nm-chip.s{font-size:11.5px;color:var(--muted);background:var(--surface-2);border-style:dashed}
+  .navmap .nm-div{display:flex;align-items:center;gap:14px;margin:32px 0 18px;color:var(--muted);font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .navmap .nm-div::before,.navmap .nm-div::after{content:"";flex:1;height:1px;background:var(--line)}
+  .navmap .nm-level{margin:22px 0 0}
+  .navmap .nm-lvhead{display:flex;align-items:center;gap:14px;margin-bottom:13px}
+  .navmap .nm-lvnum{width:40px;height:40px;flex:0 0 auto;border-radius:13px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:850;font-size:18px;box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 32%,transparent)}
+  .navmap .nm-lvhead h3{margin:0;font-size:19px;font-weight:850;letter-spacing:-.01em}
+  .navmap .nm-lvhead .sub{margin:2px 0 0;font-size:13px;color:var(--muted)}
+  .navmap .nm-conn{display:flex;flex-direction:column;align-items:center;margin:6px 0 2px}
+  .navmap .nm-conn .l{width:2px;height:22px;background:var(--line-strong)}
+  .navmap .nm-conn .t{font-size:12px;font-weight:750;color:var(--accent-dark);background:var(--accent-soft);border:1px solid var(--hotl);padding:5px 12px;border-radius:999px}
+  .navmap .nm-conn .a{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--line-strong)}
+  .navmap .nm-board{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 18px;box-shadow:var(--shadow)}
+  .navmap .nm-board.pri{border:1.5px solid var(--hotl);background:#FFF9F6}
+  .navmap .nm-bcap{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-dark);margin:0 2px 13px}
+  .navmap .nm-bcap .pin{font-size:10.5px;font-weight:850;color:#fff;background:var(--accent);padding:3px 9px;border-radius:999px;text-transform:none}
+  .navmap .nm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(226px,1fr));gap:12px}
+  .navmap .nm-card{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--radius-sm);padding:13px 14px}
+  .navmap .nm-card h4{margin:0 0 3px;font-size:15px;font-weight:840;letter-spacing:-.01em}
+  .navmap .nm-card .role{display:block;font-size:11.5px;color:var(--muted);margin:0 0 9px;font-weight:600}
+  .navmap .nm-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+  .navmap .nm-card li{position:relative;padding-left:15px;font-size:13.2px;color:var(--ink-soft);line-height:1.45}
+  .navmap .nm-card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--line-strong)}
+  .navmap .nm-card li.k{background:var(--accent-soft);border-radius:7px;padding:5px 9px 5px 22px;color:var(--ink);font-weight:680}
+  .navmap .nm-card li.k::before{left:9px;top:12px;background:var(--accent)}
+  .navmap .nm-card li b{color:var(--ink);font-weight:760}
+  .navmap .nm-card .deep{margin-top:9px;font-size:11.5px;color:var(--accent-dark);font-weight:740;border-top:1px dashed var(--line-strong);padding-top:8px}
+  .navmap .nm-card.gw{background:#FFF6F2;border-color:var(--hotl)}
+  .navmap .nm-mio{margin:24px 0 6px;background:var(--dark);color:#fff;border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+  .navmap .nm-mio::after{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--accent) 0%,transparent 70%);opacity:.34}
+  .navmap .nm-mio h3{margin:0 0 6px;font-size:18px;font-weight:850;position:relative}
+  .navmap .nm-mio .int{margin:0 0 15px;color:#D9D2DE;font-size:14px;max-width:720px;position:relative}
+  .navmap .nm-mio .rows2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;position:relative}
+  .navmap .nm-mio .r{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px}
+  .navmap .nm-mio .r h4{margin:0 0 5px;font-size:14px;font-weight:820;color:#fff}
+  .navmap .nm-mio .r p{margin:0;font-size:12.5px;color:#CFC8D5;line-height:1.5}
+  .navmap .nm-mio .r .path{color:#FFC4B4;font-weight:740}
+  .navmap .nm-foot2{margin:16px 0 0;font-size:12.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:13px}
+  @media(max-width:720px){.navmap .nm-mrow{grid-template-columns:1fr;gap:7px;padding-left:24px}.navmap .nm-rows{margin-left:18px}.navmap .nm-grid{grid-template-columns:1fr}}
   .hide{display:none !important}
   .no-result{display:none;background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--radius);padding:22px;text-align:center;color:var(--muted);font-weight:700;margin:20px 0}
   @media(max-width:900px){
@@ -87,6 +161,7 @@
     <div class="toc-ttl">Guia de configuração</div>
     <input type="search" class="toc-search" placeholder=" Buscar tutorial…" aria-label="Buscar tutorial">
     <nav class="toc-list">
+      <a href="#mapa"> Mapa de navegação</a>
       <a href="#setup"> 1 · Primeiros passos</a>
       <a href="#vitrine"> 2 · Vitrine & funil</a>
       <a href="#recorrencia"> 3 · Recorrência (Raízes)</a>
@@ -101,6 +176,117 @@
   </aside>
   <main class="guide-main">
     <div class="no-result">Nenhum tutorial encontrado para essa busca. Tente outra palavra (ex.: “order bump”, “webhook”, “pixel”, “saque”).</div>
+
+<!-- ===== MAPA DE NAVEGAÇÃO ===== -->
+<section id="mapa" class="navmap">
+  <div class="wrap">
+    <span class="eyebrow"> Mapa de navegação</span>
+    <h2 class="sec">Onde fica cada coisa na Hotmart</h2>
+    <p class="sec-intro">Para você (e quem te ajuda) nunca se perder. Primeiro o <b>mapa mental</b> — uma visão rápida de todos os menus e seus subitens; logo abaixo, o <b>mapa detalhado</b> com o que cada coisa faz.</p>
+
+    <div class="nm-legend">
+      <div class="it"><span class="nm-sw g"></span> Painel do Produtor</div>
+      <div class="it"><span class="nm-sw h"></span> Área de Membros (Club)</div>
+      <div class="it"><span class="nm-sw k"></span> Item-chave para o seu negócio</div>
+    </div>
+
+    <!-- MAPA MENTAL -->
+    <div class="nm-canvas">
+      <div class="nm-ctr"><b>HOTMART</b><span>após o login · app.hotmart.com</span></div>
+      <div class="nm-stem"></div>
+
+      <div class="nm-branch nm-painel">
+        <div class="nm-hub"><b>PAINEL DO PRODUTOR</b><span>menu lateral esquerdo</span></div>
+        <div class="nm-rows">
+          <div class="nm-mrow"><div class="nm-mnode">Início</div><div class="nm-chips"><span class="nm-chip">Resumo de vendas</span><span class="nm-chip">Avisos</span><span class="nm-chip">Atalhos</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Produtos</div><div class="nm-chips"><span class="nm-chip">Meus produtos</span><span class="nm-chip">Criar produto</span><span class="nm-chip">Página do produto</span><span class="nm-chip k">Área de Membros → abre o Club ↓</span><span class="nm-chip">Hotlinks (links)</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Vendas</div><div class="nm-chips"><span class="nm-chip">Gestão de Vendas</span><span class="nm-chip k">Assinaturas (recorrência)</span><span class="nm-chip">Reembolsos</span><span class="nm-chip">Recuperação</span><span class="nm-chip">Analytics</span><span class="nm-chip s">Painel · Tráfego · Vendas · Visões de Produto</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Ferramentas</div><div class="nm-chips"><span class="nm-chip">Página de pagamento (Checkout)</span><span class="nm-chip k">Order bump / Upsell</span><span class="nm-chip">Cupons</span><span class="nm-chip">Funil de vendas</span><span class="nm-chip">Pixel</span><span class="nm-chip">Hotmart Send (e-mail)</span><span class="nm-chip">Recomenda</span><span class="nm-chip">Eventos online</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Mercado de Afiliados</div><div class="nm-chips"><span class="nm-chip">Mercado (achar produtos)</span><span class="nm-chip">Gestão de afiliados</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Ferramentas Financeiras</div><div class="nm-chips"><span class="nm-chip">Saldo</span><span class="nm-chip">Extrato</span><span class="nm-chip k">Saque</span><span class="nm-chip">Antecipação</span><span class="nm-chip">Dados bancários</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Configurações</div><div class="nm-chips"><span class="nm-chip">Perfil</span><span class="nm-chip">Dados fiscais</span><span class="nm-chip">Segurança e acesso</span></div></div>
+        </div>
+      </div>
+
+      <div class="nm-gateway">
+        <div class="nm-gline"></div>
+        <div class="nm-gpill"><span class="nm-lbl">Como entrar no Club</span>menu <b>Produtos</b> → <b>Área de Membros</b> → selecione o seu Club</div>
+        <div class="nm-garrow"></div>
+      </div>
+
+      <div class="nm-branch nm-club">
+        <div class="nm-hub"><b>ÁREA DE MEMBROS · HOTMART CLUB</b><span>ambiente próprio · aberto pelo menu Produtos</span></div>
+        <div class="nm-rows">
+          <div class="nm-mrow"><div class="nm-mnode">Produtos</div><div class="nm-chips"><span class="nm-chip">Módulos e aulas</span><span class="nm-chip">Conteúdo</span><span class="nm-chip k">Vitrine (cadeado)</span><span class="nm-chip">Certificado</span><span class="nm-chip">Turmas</span><span class="nm-chip">Usuários</span><span class="nm-chip">Comentários</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Comunidades</div><div class="nm-chips"><span class="nm-chip">Criar / gerenciar</span><span class="nm-chip">Publicações</span><span class="nm-chip">Visão do aluno</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Moderação</div><div class="nm-chips"><span class="nm-chip">Comentários</span><span class="nm-chip">Respostas</span><span class="nm-chip s">aprovar · ocultar · spam</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Membros</div><div class="nm-chips"><span class="nm-chip">Progresso / engajamento</span><span class="nm-chip">Reenviar acesso</span><span class="nm-chip k">Bloquear / liberar acesso</span><span class="nm-chip">Mudar turma</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Vendas</div><div class="nm-chips"><span class="nm-chip k">Desconto por audiência</span><span class="nm-chip">Página de vendas Club</span><span class="nm-chip k">Anúncios no curso</span><span class="nm-chip">Módulos adicionais (pagos)</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Combos</div><div class="nm-chips"><span class="nm-chip">Combinações de produtos</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Personalização</div><div class="nm-chips"><span class="nm-chip">Editar tema (cores)</span><span class="nm-chip">Vitrine (banner e seções)</span><span class="nm-chip">Página de login</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Gamificação</div><div class="nm-chips"><span class="nm-chip">Pontos e regras</span><span class="nm-chip">Recompensas</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Insights</div><div class="nm-chips"><span class="nm-chip">Cursos</span><span class="nm-chip">Comunidades</span><span class="nm-chip">Gamificação</span><span class="nm-chip">Tutor (IA)</span></div></div>
+          <div class="nm-mrow"><div class="nm-mnode">Configurações</div><div class="nm-chips"><span class="nm-chip">Informações gerais (nome, domínio)</span><span class="nm-chip s">Ferramentas: Pixel · Tutor · App web</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nm-div">Mapa detalhado — o que cada coisa faz</div>
+
+    <!-- MAPA DETALHADO -->
+    <div class="nm-level">
+      <div class="nm-lvhead"><div class="nm-lvnum">1</div><div><h3>Entrada — login</h3><p class="sub">O ponto de partida de tudo</p></div></div>
+      <div class="nm-board"><div class="nm-grid">
+        <div class="nm-card"><h4>Acesso</h4><span class="role">Por onde você entra</span><ul><li>Acesse <b>app.hotmart.com</b></li><li>Entre com <b>e-mail e senha</b></li><li>Você cai no <b>Painel do Produtor</b></li></ul></div>
+      </div></div>
+    </div>
+
+    <div class="nm-conn"><div class="l"></div><div class="t">você chega aqui ↓</div><div class="l"></div><div class="a"></div></div>
+
+    <div class="nm-level">
+      <div class="nm-lvhead"><div class="nm-lvnum">2</div><div><h3>Painel do Produtor</h3><p class="sub">Menu lateral esquerdo — onde você gerencia o negócio</p></div></div>
+      <div class="nm-board"><div class="nm-bcap">Menu lateral esquerdo</div><div class="nm-grid">
+        <div class="nm-card"><h4>Início</h4><span class="role">Visão geral</span><ul><li>Resumo de vendas e avisos</li><li>Atalhos para o que você mais usa</li></ul></div>
+        <div class="nm-card gw"><h4>Produtos</h4><span class="role">Criar e organizar o que você vende</span><ul><li>Meus produtos</li><li>Criar produto</li><li>Página do produto</li><li class="k">Área de Membros (Hotmart Club)</li><li>Hotlinks (links de divulgação)</li></ul><div class="deep">→ "Área de Membros" abre a Camada 3</div></div>
+        <div class="nm-card"><h4>Vendas</h4><span class="role">Acompanhar e recuperar vendas</span><ul><li>Gestão de Vendas</li><li class="k">Assinaturas (recorrência)</li><li>Reembolsos</li><li>Recuperação de vendas</li><li><b>Analytics</b> (menu direito): Painel · Tráfego · Vendas · Visões de Produto</li></ul></div>
+        <div class="nm-card"><h4>Ferramentas</h4><span class="role">"Ver todas" abre a lista completa</span><ul><li>Página de pagamento (Checkout)</li><li class="k">Order bump / Upsell</li><li>Cupons</li><li>Funil de vendas</li><li>Pixel de rastreamento</li><li>Hotmart Send (e-mail)</li><li>Recomenda · Eventos online</li></ul></div>
+        <div class="nm-card"><h4>Mercado de Afiliados</h4><span class="role">Vender com a ajuda de outros</span><ul><li>Mercado (encontrar produtos)</li><li>Gestão de afiliados</li></ul></div>
+        <div class="nm-card"><h4>Ferramentas Financeiras</h4><span class="role">Seu dinheiro</span><ul><li>Saldo e extrato</li><li class="k">Saque</li><li>Antecipação</li><li>Dados bancários</li></ul></div>
+        <div class="nm-card"><h4>Configurações</h4><span class="role">Sua conta</span><ul><li>Perfil</li><li>Dados fiscais</li><li>Segurança e acesso</li></ul></div>
+      </div></div>
+    </div>
+
+    <div class="nm-conn"><div class="l"></div><div class="t">Produtos → Área de Membros abre ↓</div><div class="l"></div><div class="a"></div></div>
+
+    <div class="nm-level">
+      <div class="nm-lvhead"><div class="nm-lvnum">3</div><div><h3>Área de Membros — Hotmart Club</h3><p class="sub">Um ambiente separado, com o seu próprio menu lateral</p></div></div>
+      <div class="nm-board pri"><div class="nm-bcap"><span class="pin">ambiente próprio</span> Menu lateral esquerdo dentro do Club</div><div class="nm-grid">
+        <div class="nm-card"><h4>Produtos</h4><span class="role">O conteúdo que o aluno vê</span><ul><li>Módulos e aulas · conteúdo</li><li class="k">Vitrine (cadeado / teaser)</li><li>Certificado · turmas</li><li>Usuários e comentários</li></ul></div>
+        <div class="nm-card"><h4>Comunidades</h4><span class="role">Interação e engajamento</span><ul><li>Criar e gerenciar comunidades</li><li>Publicações para os membros</li></ul></div>
+        <div class="nm-card"><h4>Moderação</h4><span class="role">Controlar comentários</span><ul><li>Comentários e respostas</li><li>Aprovados · pendentes · ocultados · spam</li></ul></div>
+        <div class="nm-card"><h4>Membros</h4><span class="role">Gestão de alunos</span><ul><li>Progresso e engajamento</li><li>Reenviar acesso</li><li class="k">Bloquear / liberar acesso (por aluno)</li><li>Mudar turma</li></ul></div>
+        <div class="nm-card"><h4>Vendas</h4><span class="role">Vender para quem já é aluno</span><ul><li class="k">Desconto por audiência</li><li>Página de vendas Club</li><li class="k">Anúncios dentro do curso</li><li>Módulos adicionais (pagos)</li></ul></div>
+        <div class="nm-card"><h4>Combos</h4><span class="role">Vender vários juntos</span><ul><li>Combinações de produtos</li></ul></div>
+        <div class="nm-card"><h4>Personalização</h4><span class="role">A cara da sua marca</span><ul><li>Editar tema (cores)</li><li>Vitrine (banner e seções)</li><li>Página de login</li></ul></div>
+        <div class="nm-card"><h4>Gamificação</h4><span class="role">Engajar com recompensas</span><ul><li>Pontos e regras</li><li>Recompensas</li></ul></div>
+        <div class="nm-card"><h4>Insights</h4><span class="role">Resultados da área de membros</span><ul><li>Cursos · Comunidades</li><li>Gamificação · Tutor (IA)</li></ul></div>
+        <div class="nm-card"><h4>Configurações</h4><span class="role">Ajustes do Club</span><ul><li>Informações gerais (nome, domínio próprio)</li><li>Ferramentas: Pixel · Tutor (IA) · Aplicativo web</li></ul></div>
+      </div></div>
+    </div>
+
+    <div class="nm-mio">
+      <h3>No seu caso, onde fica o quê</h3>
+      <p class="int">O mesmo mapa, ligado aos seus projetos — para achar o caminho rápido na hora de configurar.</p>
+      <div class="rows2">
+        <div class="r"><h4>"Raízes" (recorrente, entrada aberta)</h4><p><span class="path">Produtos</span> (assinatura) + <span class="path">Vendas › Assinaturas</span>; no Club, controle individual em <span class="path">Membros</span> e liberação por etapas (drip).</p></div>
+        <div class="r"><h4>"Origem" (evento + gravação)</h4><p>Ingresso em <span class="path">Ferramentas › Eventos online</span>; gravação como <span class="path">Order bump</span> no checkout.</p></div>
+        <div class="r"><h4>Vitrine e venda para alunos</h4><p>No Club: <span class="path">Vendas › Anúncios</span> e <span class="path">Desconto por audiência</span> + <span class="path">Produtos › Vitrine</span>.</p></div>
+      </div>
+    </div>
+
+    <p class="nm-foot2">Baseado na Central de Ajuda oficial da Hotmart (maio/2026). A Hotmart atualiza a interface de tempos em tempos, então um nome de menu pode mudar de lugar — a lógica das camadas (Painel → Produtos → Área de Membros) tende a permanecer.</p>
+  </div>
+</section>
 
 <!-- ===== PRIMEIROS PASSOS ===== -->
 <section id="setup">
